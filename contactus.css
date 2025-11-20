@@ -1,0 +1,139 @@
+#panel4 {
+  background: #EBE2D9;
+  color: #fff;
+  margin-top: 15vh;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  height: 85vh;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 60px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  flex-direction: column;
+}
+
+.contact-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 90%;
+  height: 100%;
+}
+
+/* 2 boxes info and map */ 
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-map {
+  flex: 1.2;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 60px rgba(0,0,0,0.25);
+}
+
+.contact-info h2 {
+  color: #37493b;
+  font-size: 5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+
+.contact-subtitle {
+  color: #db7f2d;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 55px;
+  text-align: left;
+}
+
+.contact-item {
+  display: inline;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contact-item h3 {
+  color: #37493b;
+  opacity: 0.9;
+  display: inline;
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.contact-item p, 
+.contact-item a {
+  margin-top: 10px;
+  color: #db7f2d;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: none;
+  text-align: left;
+  /* display: inline; */
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+    .contact-info {
+        width: 40%;
+        margin-right: 10%;
+    }
+    .contact-map {
+        width: 40%;
+    }
+
+} 
+
+
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    #panel4 {
+        height: auto;
+        padding: 40px 25px;
+    }
+
+    .contact-map {
+        height: 300px;
+        min-height: 200px;
+    }
+    
+    .contact-info h2 {
+        font-size: 3rem;
+    }
+
+
+    .contact-subtitle {
+    margin-bottom: 35px;
+    font-size: 1.5rem;
+    }
+
+    .contact-item {
+    font-size: 1rem;
+    }
+
+    .contact-item h3 {
+    font-size: 1rem;
+    }
+
+    .contact-item p, 
+    .contact-item a {
+    font-size: 1rem;
+    }
+
+}

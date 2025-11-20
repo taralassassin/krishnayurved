@@ -1,0 +1,294 @@
+/* Basic resets */
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+html, body {
+  height:100%;
+  overflow:hidden;
+  font-family: Lexend, sans-serif;
+}
+#container {
+  font-family: Lexend, sans-serif;
+  height:100%;
+  width:100%;
+  position: relative;
+  /* transition: transform 0.8s ease-in-out;  old animation for scroll*/
+  transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform; 
+}
+
+p {
+  line-height:1.6;
+  text-align: center;
+}
+
+.panel.active {
+  /* box-shadow: 0 -20px 40px rgba(0,0,0,0.4);  shadow comes when scrol down and not when up */
+  transform: translateY(0) scale(1);
+}
+
+.panel.previous {
+  transform: translateY(-10%) scale(1);
+}
+
+.panel.next {
+  transform: translateY(100%) scale(1);
+}
+
+.panel {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* allow content to start at top */
+  overflow-y: auto;     /* enable internal scrolling if content overflows */
+  justify-content: center;
+  font-family: Lexend;
+  font-size: 2rem;
+  transition: border-radius 1s cubic-bezier(0.65, 0, 0.35, 1), 
+              transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform, box-shadow, border-radius;
+  
+  padding: 1em;    
+       /* Optional: add some padding inside panels */
+}
+
+
+
+/* Rounded corners on active panel but only during transition (we'll toggle a class for that) */
+.panel.active.rounded-top {
+  border-top-left-radius: 4vw;
+  border-top-right-radius: 4vw;
+}
+
+/* Once fully active and filling screen, no rounding */
+.panel.active.fullscreen {
+  border-radius: 0;
+}
+
+#panel1 {
+  color: #333; 
+  background: #EBE2D9;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;} 
+#panel2 { color: white; }
+#panel3 { background: #EBE2D9; color: #333;}
+#panel4 {   
+  margin-top: 15vh;
+  color: white;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  height: 85vh;  /* Only 85% of viewport */
+  bottom: 0;
+  position: absolute;
+  overflow-y: auto;
+}
+
+#panel4.active {
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.logo_wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: auto;
+  overflow: hidden;
+  background-color: red;
+  width: 100%;
+  /* max-width: 1000px; */
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+
+.logo_img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 1;           /* you have this, maybe you’ll animate it in */
+}
+.logo_circle_img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 32%;
+  left: 46%;
+  transform-origin: top left;
+  transform: scale(0.085);
+}
+.heading_hero{
+  /* font-size: 8.8vmax; */
+  font-size: 8vmax;
+  position: relative;
+  /* color: #C88447; */
+  color: #e57410;
+}
+.subtext_hero{
+  font-size: 2vmax;
+}
+
+@keyframes moveAlong {
+  0%   { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+
+
+.dot_svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  display: block; /* behaves like a block layer, but doesn’t push anything */
+  z-index: 2;
+}
+
+.dot_circle{
+  top: 10%;
+  left: 50%;
+}
+
+.i_hero_before{
+  color: #C88447;
+}
+.i_hero_after{
+  font-size: 10vmax;
+  color: #C88447;
+  font-family: Arial, sans-serif;
+}
+
+
+.hero_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  /* padding-top: 8vh;
+  padding-bottom: 6vh; */
+  text-align: center;
+}
+
+/* ---------- SVG Layers ---------- */
+.stage {
+  width: 100%;
+  height: 100%;
+  background: #EBE2D9; /* same as hero bg */
+  /* background-color: pink; */
+  position: relative;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.layer svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.panel svg{
+  scale: 2;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+circle {
+  fill: #37493b;
+  opacity: 0;
+}
+path{
+  fill: #37493b;
+  opacity: 0;
+}
+
+/* ---------- Hero Text ---------- */
+.hero_all_text {
+  margin-top: auto;
+  /* margin-bottom: 5vmin; */
+  color: #333;
+}
+
+
+.subtext_hero {
+  font-size: 2vmax;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+/* @media (max-width: 1024px) {
+  .logo_wrapper { width: 75%; max-width: 80vw; }
+  .heading_hero { font-size: 9vmax; }
+}
+
+*/
+@media (max-width: 1080px) {
+  .heading_hero { font-size: 9vh; }
+  .hero_content{padding-top: 6vh; padding-bottom: 8vh;}
+  .logo_wrapper{width: 95%;}
+  .layer{scale: 0.68;}
+
+
+}
+@media (max-width: 760px) {
+  .panel{height: 100dvh;}
+  .logo_wrapper { width: 85%; max-width: 320px; margin-top: 15%; scale: 1.4; }
+  .hero_all_text{margin-bottom: 10%;}
+  .heading_hero { font-size: 9vmax; }
+  .subtext_hero { font-size: 2.5vmax;}
+  .layer{width: 100%; height: 100%; }
+} 
+
+
+/* #petalLU, #petalLL, #petalRU, #petalRL, #circle, #person, #flame{
+  opacity:1;
+} */
+.under{z-index:1}
+.mid {z-index:1.5}
+.center{z-index:2}
+.over{z-index:3}
+
+#reveal_boxbox{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#reveal_box{
+  position: absolute;
+  width: 100%;
+  height: 1000px;
+  background-color: #EBE2D9 ;
+}
+
+.state, .layer svg {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
